@@ -28,6 +28,7 @@ struct HomeView: View {
                     Text("Profile")
                 }
         }
+        .accentColor(.green) // Set the accent color to green
     }
 }
 
@@ -43,7 +44,8 @@ struct TodayView: View {
                         
                         Text(currentDate())
                             .font(.headline)
-                            .foregroundColor(.gray).padding(.top)
+                            .foregroundColor(.gray)
+                            .padding(.top)
                         
                         Spacer()
                         
@@ -54,7 +56,7 @@ struct TodayView: View {
                                 ZStack {
                                     Circle()
                                         .fill(Color.red)
-                                        .frame(width: 24, height: 24)
+                                        .frame(width: 30, height: 30)
                                     Text("SOS")
                                         .font(.caption)
                                         .foregroundColor(.white)
@@ -65,6 +67,7 @@ struct TodayView: View {
                             }) {
                                 Image(systemName: "bell")
                                     .foregroundColor(.gray)
+                                    .frame(width: 30, height: 30)
                             }
                         }
                     }
@@ -84,8 +87,8 @@ struct TodayView: View {
                         }
                         .buttonStyle(PlainButtonStyle())
                         
-                        NavigationLink(destination: VideoChat()){
-                            ServiceButton(title: "Video Chat", subtitle: "Video Call with doctor", color: .gray.opacity(0.3), iconName: "video.circle.fill")
+                        NavigationLink(destination: VideoChat()) {
+                            ServiceButton(title: "Video Chat", subtitle: "Video Call with doctor", color: .gray.opacity(0.6), iconName: "video.circle.fill")
                                 .frame(width: 180, height: 130)
                         }
                     }
@@ -107,8 +110,8 @@ struct TodayView: View {
                         .padding(.horizontal)
                 }
             }
-            .navigationBarHidden(true)
         }
+        .navigationBarHidden(true)
     }
     
     private func currentDate() -> String {
@@ -149,6 +152,7 @@ struct ServiceButton: View {
             Text(subtitle)
                 .font(.subheadline)
                 .foregroundColor(.white)
+
         }
         .padding()
         .background(color)
@@ -214,10 +218,9 @@ struct BestOffersView: View {
             HStack(spacing: 16) {
                 ForEach(offers) { offer in
                     OfferCard(offer: offer)
-                        .frame(width: 200, height: 100) // Adjust size as needed
+                        .frame(width: 180, height: 90) // Adjust size as needed
                 }
             }
-            .padding(.horizontal)
         }
     }
 }
@@ -249,3 +252,4 @@ struct ContentView_Previews: PreviewProvider {
         HomeView()
     }
 }
+

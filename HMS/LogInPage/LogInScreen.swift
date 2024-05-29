@@ -1,21 +1,15 @@
-//
-//  ContentView.swift
-//  LogInPage
-//
-//  Created by prakul agarwal on 27/05/24.
-//
-
-
 import SwiftUI
 
 struct LogInScreen: View {
     @State private var email = ""
     @State private var password = ""
-
+    @State private var errorMessage = ""
+    @State private var showingHomeView = false
+    
     var body: some View {
         NavigationView {
             VStack {
-                VStack{
+                VStack {
                     Image("Logo")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
@@ -29,14 +23,14 @@ struct LogInScreen: View {
                         .foregroundColor(.green)
                 }
                 .offset(y: 80)
-                VStack{
+                
+                VStack {
                     TextField("Email", text: $email)
                         .padding()
                         .background(Color(.systemGray6))
                         .cornerRadius(5)
                         .frame(height: 60)
                         .padding(.horizontal)
-                    
                     
                     SecureField("Password", text: $password)
                         .padding()
@@ -62,11 +56,12 @@ struct LogInScreen: View {
                     }
                     .padding(.horizontal)
                 }
-                .offset(y:120)
+                .offset(y: 120)
+                
                 Spacer()
-
+                
                 Button(action: {
-                    // Handle sign-in action
+                    login()
                 }) {
                     HStack {
                         Spacer()
@@ -80,13 +75,47 @@ struct LogInScreen: View {
                 }
                 .padding(.horizontal)
                 .offset(y: -60)
+                
+                if !errorMessage.isEmpty {
+                    Text(errorMessage)
+                        .foregroundColor(.red)
+                        .padding()
+                }
             }
             .padding()
+            .background(
+                NavigationLink(
+                    destination: HomeView(),
+                    isActive: $showingHomeView
+                    
+                ) {
+                    EmptyView()
+                }
+            )
+        }
+        .navigationBarBackButtonHidden(true)
+
+    }
+    
+    func login() {
+        NetworkManager.shared.login(email: email, password: password) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    // If login is successful, navigate to the main page view
+                    self.showingHomeView = true
+                case .failure(let error):
+                    // If login fails, display an error message
+                    self.errorMessage = "Incorrect email or password. Please try again."
+                    print(error.localizedDescription)
+                    // Do not set showingHomeView to true to prevent redirection
+                }
+            }
         }
     }
+    
 }
-
-struct LoginView_Previews: PreviewProvider {
+struct LogInScreen_Previews: PreviewProvider {
     static var previews: some View {
         LogInScreen()
     }

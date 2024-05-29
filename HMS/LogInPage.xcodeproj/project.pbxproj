@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18AEAF5E2C063E18006AF1D8 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEAF5D2C063E18006AF1D8 /* HomeView.swift */; };
+		18AEAF602C063FED006AF1D8 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEAF5F2C063FED006AF1D8 /* NetworkManager.swift */; };
+		18AEAF622C064650006AF1D8 /* mainPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AEAF612C064650006AF1D8 /* mainPageView.swift */; };
 		859B0C4F2C047F660099FDD3 /* LogInPageApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859B0C4E2C047F660099FDD3 /* LogInPageApp.swift */; };
 		859B0C512C047F660099FDD3 /* LogInScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 859B0C502C047F660099FDD3 /* LogInScreen.swift */; };
 		859B0C532C047F680099FDD3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 859B0C522C047F680099FDD3 /* Assets.xcassets */; };
@@ -22,6 +25,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		18AEAF5D2C063E18006AF1D8 /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		18AEAF5F2C063FED006AF1D8 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		18AEAF612C064650006AF1D8 /* mainPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mainPageView.swift; sourceTree = "<group>"; };
 		859B0C4B2C047F660099FDD3 /* LogInPage.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LogInPage.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		859B0C4E2C047F660099FDD3 /* LogInPageApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInPageApp.swift; sourceTree = "<group>"; };
 		859B0C502C047F660099FDD3 /* LogInScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInScreen.swift; sourceTree = "<group>"; };
@@ -68,9 +74,12 @@
 			isa = PBXGroup;
 			children = (
 				859B0C4E2C047F660099FDD3 /* LogInPageApp.swift */,
+				18AEAF5D2C063E18006AF1D8 /* HomeView.swift */,
+				18AEAF612C064650006AF1D8 /* mainPageView.swift */,
 				859B0C502C047F660099FDD3 /* LogInScreen.swift */,
 				859B0C782C04929F0099FDD3 /* CreateAccountScreen.swift */,
 				859B0C7C2C05CC150099FDD3 /* OTPVerificationView.swift */,
+				18AEAF5F2C063FED006AF1D8 /* NetworkManager.swift */,
 				859B0C522C047F680099FDD3 /* Assets.xcassets */,
 				859B0C5C2C0481970099FDD3 /* PageModel.swift */,
 				859B0C832C05E1830099FDD3 /* Patient */,
@@ -169,13 +178,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18AEAF602C063FED006AF1D8 /* NetworkManager.swift in Sources */,
 				859B0C872C05E1EC0099FDD3 /* ClinicView.swift in Sources */,
 				859B0C7D2C05CC150099FDD3 /* OTPVerificationView.swift in Sources */,
 				859B0C812C05E1400099FDD3 /* today.swift in Sources */,
 				859B0C8B2C05E2390099FDD3 /* CheckUps.swift in Sources */,
 				859B0C512C047F660099FDD3 /* LogInScreen.swift in Sources */,
+				18AEAF5E2C063E18006AF1D8 /* HomeView.swift in Sources */,
 				859B0C792C0492A00099FDD3 /* CreateAccountScreen.swift in Sources */,
 				859B0C852C05E1AE0099FDD3 /* profile.swift in Sources */,
+				18AEAF622C064650006AF1D8 /* mainPageView.swift in Sources */,
 				859B0C5D2C0481970099FDD3 /* PageModel.swift in Sources */,
 				859B0C4F2C047F660099FDD3 /* LogInPageApp.swift in Sources */,
 				859B0C892C05E2150099FDD3 /* VideoChat.swift in Sources */,

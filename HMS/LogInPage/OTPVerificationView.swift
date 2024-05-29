@@ -1,15 +1,11 @@
-//
-//  verification.swift
-//  LogInPage
-//
-//  Created by prakul agarwal on 28/05/24.
-//
-
 import SwiftUI
 
 struct OTPVerificationView: View {
     @State private var otpCode: [String] = ["", "", "", "", "", ""]
-    
+    @State private var errorMessage = ""
+    @State private var showingLoginScreen = false
+    var email: String
+
     var body: some View {
         VStack(spacing: 20) {
             Text("OTP Verification")
@@ -18,7 +14,7 @@ struct OTPVerificationView: View {
                 .foregroundColor(.green)
             
             Text("Hello User,")
-            Text("Thank you for registering with us. Please type the OTP shared on your mobile xxxxxxxx123.")
+            Text("Thank you for registering with us. Please type the OTP shared on your email \(email).")
                 .multilineTextAlignment(.center)
             
             HStack(spacing: 10) {
@@ -29,6 +25,12 @@ struct OTPVerificationView: View {
                         .multilineTextAlignment(.center)
                         .keyboardType(.numberPad)
                 }
+            }
+            
+            if !errorMessage.isEmpty {
+                Text(errorMessage)
+                    .foregroundColor(.red)
+                    .padding()
             }
             
             Button(action: resendOTP) {
@@ -46,7 +48,14 @@ struct OTPVerificationView: View {
             }
         }
         .padding()
-        .navigationBarBackButtonHidden(true) // Hides the back button
+        .background(
+            NavigationLink(
+                destination: LogInScreen(),
+                isActive: $showingLoginScreen
+            ) {
+                EmptyView()
+            }
+        )
     }
     
     func resendOTP() {
@@ -54,14 +63,16 @@ struct OTPVerificationView: View {
     }
 
     func submitOTP() {
-        // Code to submit entered OTP
-    }
-}
-
-struct OTPVerificationView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-           OTPVerificationView()
+        let otpString = otpCode.joined()
+        NetworkManager.shared.verifyOTP(email: email, otp: otpString) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(_):
+                    self.showingLoginScreen = true
+                case .failure(let error):
+                    self.errorMessage = error.localizedDescription
+                }
+            }
         }
     }
 }
